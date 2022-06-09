@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>uni</title>
+      <link rel="stylesheet" href="../static/css/announcementpage1.css" th:href="@{/css/announcementpage1.css}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body >
+     
+     
+      
+      <div class="wrapper"> 
+  
+         <div class="container">
+			 <i class="fas fa-bullhorn"></i> <h1>Announcement</h1>
+			  
+          <div th:if="${user.role == 'Student'}">
+          <div class="faq-header"></div>
+<div class="faq-content" th:each="announcement : ${announcements}">
+  <div class="faq-question">
+    <input id="q1" type="checkbox" class="panel">
+    <div class="plus">+</div>
+    <label for="q1" class="panel-title" th:text="${announcement.title}"> </label>
+    <div class="panel-content" th:text="${announcement.description}"></div>
+  </div>
+ 
+</div>
+
+</div>
+			
+			 
+
+            <!--Instructor-->
+            <div th:if="${user.role == 'Instructor'}">
+               <div class="faq-header"></div>
+<div class="faq-content" th:each="announcement : ${announcements}">
+  <div class="faq-question">
+    <input id="q1" type="checkbox" class="panel">
+    <div class="plus">+</div>
+   
+      <label>  <button class="btn3" ><i class="fa fa-times"></i></button> </label> <label for="q1" class="panel-title" th:text="${announcement.title}"></label>
+    <div class="panel-content" th:text="${announcement.description}"> </div>
+  </div>
+  
+  
+  
+  
+  
+</div>
+
+<div class="row" style="margin: 10em;"></div>
+
+                                    
+                                    
+             <form th:if="${user.role == 'Instructor'}" action="#" th:action="@{/subjects/announcement/new/{id}(id=${groupentity.id})}" th:object="${announcementDTO}" method="POST">                
+			<label for="Atitle"></label> 
+            <input type="text" th:field="*{title}" placeholder="Enter the title" name="Atitle"style="width: 200px;">
+            <input type="text" th:field="*{description}" placeholder="Enter the describtion" name="Adesc" style="width: 200px;">
+			
+			
+			
+            
+            <button type="submit" class="btn">Make Announcement</button>
+               </form>
+            </div>
+					   
+						
+					
+         </div>
+         
+         
+
+
+          
+		  <!--side bar -->
+		  
+         <input type="checkbox" id="btn" hidden>
+		<label for="btn" class="menu-btn">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times"></i>
+		</label>
+		<nav id="sidebar">
+			<div class="title">
+				my menu </div>
+			<ul class="list-items">
+				<li><a th:href="@{/subjects/announcement/{id}(id=${groupentity.id})}"><i class="far fa-envelope"></i>Announcment</a></li>
+				<li><a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}"><i class="fas fa-hand-paper"></i>Attendance</a></li>
+				<li><a th:href="@{/subjects/content/{id}(id=${groupentity.id})}"><i class="fas fa-link"></i>Content</a></li>
+				<li><a th:href="@{/subjects/homework/{id}(id=${groupentity.id})}"><i class="fas fa-stream"></i>Homeworks</a></li>
+				<li><a th:href="@{/subjects/dashboard}"><i class="fas fa-home"></i>Your Cources</a></li>
+				<li><a th:href="@{/logout}"><i class="fa fa-power-off" style="font-size:24px"></i>Logout</a></li>
+
+
+			</ul>
+		</nav>
+	</div>
+      
+    <section></section>
+      
+   
+   
+  
+   </body>
+   
+   
+</html>

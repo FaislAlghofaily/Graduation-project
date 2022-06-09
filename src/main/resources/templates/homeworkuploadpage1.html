@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>uni</title>
+	<link rel="stylesheet" href="../static/css/homeworkuploadpage1.css" th:href="@{/css/homeworkuploadpage1.css}">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+		
+<!--   faisl   -->
+
+	
+                            <div class="container">
+								<h1>Homework</h1>
+								<form th:if="${Submitted == false}" action="#" th:action="@{/subjects/homework/fileupload/{id}/{homeworkid}(id=${groupentity.id},homeworkid=${homeworkid})}" enctype="multipart/form-data" method="POST">
+								<table style="margin: 0px auto;">
+									<thead>
+										
+										<tr>
+										<td>	<h2>Title</h2> </td> 	
+										<td> <h2>Describtion</h2> </td>
+										<td>	<h2>Deadline</h2> 	</td>
+										<td>	<h2>Action</h2>	</td>
+									</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>HomeWork-1 </td>
+											<td>describtion of the homework </td>
+
+											<td>5-5-2022 </td>
+											
+											
+											<td>
+												<div class="col-sm-4">
+													<input type="file"  id="fileUpload" name="fileUpload">
+												</div>
+										</td>
+										
+
+										</tr>
+										
+									</tbody>
+								</table>
+                                <div class="row" style="margin: 1em;">
+                                    <div class="col-sm-4">
+													<button type="submit" class="btn2" id="uploadButton"><h2>Upload</h2></button>
+												</div>
+                                    
+                                   
+                                </div>
+                            </div>
+                        </form>
+
+            <!--   faisl   -->
+
+
+			<input type="checkbox" id="btn" hidden>
+		<label for="btn" class="menu-btn">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times"></i>
+		</label>
+		<nav id="sidebar">
+			<div class="title">
+				my menu </div>
+			<ul class="list-items">
+				<li><a th:href="@{/subjects/announcement/{id}(id=${groupentity.id})}"><i class="far fa-envelope"></i>Announcment</a></li>
+				<li><a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}"><i class="fas fa-hand-paper"></i>Attendance</a></li>
+				<li><a th:href="@{/subjects/content/{id}(id=${groupentity.id})}"><i class="fas fa-link"></i>Content</a></li>
+				<li><a th:href="@{/subjects/homework/{id}(id=${groupentity.id})}"><i class="fas fa-stream"></i>Homeworks</a></li>
+				<li><a th:href="@{/subjects/dashboard}"><i class="fas fa-home"></i>Your Cources</a></li>
+				<li><a th:href="@{/logout}"><i class="fa fa-power-off" style="font-size:24px"></i>Logout</a></li>
+
+
+			</ul>
+		</nav>
+	</div>
+	<section></section>
+</body>
+
+</html>

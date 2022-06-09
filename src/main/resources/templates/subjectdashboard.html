@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>New Subject</title>
+</head>
+<body>
+<link rel="stylesheet" href="./css/register.css" th:href="@{/css/register.css}">
+</head>
+<body>
+
+	<a th:href="@{/subjects/announcement/{id}(id=${groupentity.id})}" class="btn btn-primary">announcment</a>
+	<hr>
+	<a th:href="@{/subjects/content/{id}(id=${groupentity.id})}" class="btn btn-primary">content</a>
+	<hr>
+	<a th:href="@{/subjects/homework/{id}(id=${groupentity.id})}" class="btn btn-primary">homeworks</a>
+	<hr>
+	<a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}" class="btn btn-primary">attendance</a>
+
+</body>
+</html>

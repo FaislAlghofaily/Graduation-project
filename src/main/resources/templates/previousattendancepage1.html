@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>uni</title>
+	<link rel="stylesheet" href="../static/css/previousattendancepage1.css" th:href="@{/css/previousattendancepage1.css}">
+
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<!--   faisl   -->
+
+
+		<div class="container">
+			<h1>Previous Attendance</h1>
+			<section th:if="${attendancelist != null}">
+				<table style="margin: 0px auto;">
+					<thead>
+
+						<tr>
+							<td>
+								<h2> Student Name</h2>
+							</td>
+							<td>
+								<h2>Date </h2>
+							</td>
+							<td>
+								<h2>Action</h2>
+							</td>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="attendance : ${attendancelist}">
+							<td th:text="${attendance.name}"> </td>
+							<td th:text="${attendance.dateOfLecture}"> </td>
+
+								<td th:if="${attendance.status=='absent'}">
+								<a
+			th:href="@{/subjects/attendance/present/{id}/{studentid}/{date}( id=${groupentity.id},studentid=${attendance.id},date=${attendance.dateOfLecture} )}">
+								 <div class="col-sm-6"> <button class="btn2" ><i class="fa fa-hand-paper"></i> Make Present</button></a></td> 
+								
+								
+							<td th:if="${attendance.status=='present'}"><a
+			th:href="@{/subjects/attendance/absent/{id}/{studentid}/{date}( id=${groupentity.id},studentid=${attendance.id},date=${attendance.dateOfLecture} )}">
+									<div class="col-sm-6"> <button class="btn2"><i class="fa fa-times"></i> Make
+											Absent</button></a></td>
+		</div>
+
+
+	
+
+
+
+
+
+	</tr>
+
+	</tbody>
+	</table>
+	</section>
+
+	<div class="row" style="margin: 1em;">
+	<form action="#" th:action="@{/subjects/attendance/date/{id}(id=${groupentity.id})}" th:object="${attendanceDTO}"
+		method="POST">
+		<select class="form-control" id="dateOfLecture" th:field="*{dateOfLecture}">
+			<option value="Select one">select option</option>
+			<option th:each="date : ${dates}" th:value="${date}" th:text="${date}"></option>
+		</select>
+
+     <button type="submit" class="btn3">Go</button>
+		</div>
+		
+
+	</form>
+
+		<div class="col-sm-4">
+			<a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}">  <button class="btn btn-dark" id="BackButton" >
+				<h2>Back</h2>
+			</button>
+			</a>
+		</div>
+<br>
+	</div>
+	
+	</form>
+
+	<!--   faisl   -->
+
+
+	<input type="checkbox" id="btn" hidden>
+	<label for="btn" class="menu-btn">
+		<i class="fas fa-bars"></i>
+		<i class="fas fa-times"></i>
+	</label>
+	<nav id="sidebar">
+		<div class="title">
+			my menu </div>
+		<ul class="list-items">
+			<li><a th:href="@{/subjects/announcement/{id}(id=${groupentity.id})}"><i
+						class="far fa-envelope"></i>Announcment</a></li>
+			<li><a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}"><i
+						class="fas fa-hand-paper"></i>Attendance</a></li>
+			<li><a th:href="@{/subjects/content/{id}(id=${groupentity.id})}"><i class="fas fa-link"></i>Content</a></li>
+			<li><a th:href="@{/subjects/homework/{id}(id=${groupentity.id})}"><i class="fas fa-stream"></i>Homeworks</a>
+			</li>
+			<li><a th:href="@{/subjects/dashboard}"><i class="fas fa-home"></i>Your Cources</a></li>
+			<li><a th:href="@{/logout}"><i class="fa fa-power-off" style="font-size:24px"></i>Logout</a></li>
+
+
+		</ul>
+	</nav>
+	</div>
+	<section></section>
+</body>
+</div>
+</html>

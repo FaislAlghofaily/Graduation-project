@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>uni</title>
+      <link rel="stylesheet" href="../static/css/Attendance1.css" th:href="@{/css/Attendance1.css}" th:if="${user.role == 'Instructor'}">
+      <link rel="stylesheet" href="../static/css/Attendance.css" th:href="@{/css/Attendance.css}" th:if="${user.role == 'Student'}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+     <div th:if="${user.role == 'Instructor'}">
+      <div class="wrapper">
+         <div class="container">
+           
+            <h1>Attendance</h1>
+
+
+            
+        <!--  Student-->
+        
+        <form th:if="${codecheckentity != null and user.role == 'Student' and attendanceSubmitted==false}" action="#" 
+			th:action="@{/subjects/attendance/validation/{id}(id=${groupentity.id})}" th:object="${attendanceDTO}" method="POST">
+			
+        
+            <label for="Acode"></label>
+            <input type="text" th:field="*{codeOfAttendance}" placeholder="Enter the code" name="Acode" required>
+            <button type="submit" class="btn">submit</button>    
+        </form>
+                        <h2 th:if="${codecheckentity != null and user.role == 'Student' and attendanceSubmitted==true}">Attendance Validated !</h2> 
+
+
+
+                     
+      <div th:if="${codecheckentity != null and user.role == 'Instructor'}">
+      <br>
+      <br>
+         
+<h1 th:text="${codecheckentity.attendanceCode}" style="color:red;"></h1>
+ </div> 
+                       <div class="row" style="margin: 1em;">
+                        <div class="col-sm-4">
+                        <a th:if="${codecheckentity == null and user.role == 'Instructor'}"
+			th:href="@{/subjects/attendance/newcode/{id}(id=${groupentity.id})}">
+                           <button type="submit" class="btn btn-dark" id="startButton" ><h3>Start New Attendance</h3></button>
+                        </a>
+                        <br> 
+                        <br>
+                        <a th:if="${user.role == 'Instructor'}" th:href="@{/subjects/attendance/all/{id}(id=${groupentity.id})}" >
+                           <button type="submit" class="btn btn-dark" id="previousButton"><h3>previous Attendance</h3></button></a>
+                        </div>
+                     </div> 
+
+                     <!-- Instructor-->
+
+
+
+          </div>
+        
+         <input type="checkbox" id="btn" hidden>
+		<label for="btn" class="menu-btn">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times"></i>
+		</label>
+		<nav id="sidebar">
+			<div class="title">
+				my menu </div>
+			<ul class="list-items">
+				<li><a th:href="@{/subjects/announcement/{id}(id=${groupentity.id})}"><i class="far fa-envelope"></i>Announcment</a></li>
+				<li><a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}"><i class="fas fa-hand-paper"></i>Attendance</a></li>
+				<li><a th:href="@{/subjects/content/{id}(id=${groupentity.id})}"><i class="fas fa-link"></i>Content</a></li>
+				<li><a th:href="@{/subjects/homework/{id}(id=${groupentity.id})}"><i class="fas fa-stream"></i>Homeworks</a></li>
+				<li><a th:href="@{/subjects/dashboard}"><i class="fas fa-home"></i>Your Cources</a></li>
+				<li><a th:href="@{/logout}"><i class="fa fa-power-off" style="font-size:24px"></i>Logout</a></li>
+				
+
+
+			</ul>
+		</nav>
+	</div>
+      
+    <section></section>
+     </div>
+     <div th:if="${user.role == 'Student'}"> 
+   
+   <div class="wrapper">
+   <div class="container">
+   <h2>Attendance</h2>
+   
+   
+   
+   <div  th:if="${codecheckentity != null and user.role == 'Student' and attendanceSubmitted==true}">
+   <br>
+   <h3 style="color:rgb(0, 134, 0);">Validated &#10004;</h3>
+   </div>
+         <form th:if="${codecheckentity != null and user.role == 'Student' and attendanceSubmitted==false}" action="#" 
+			th:action="@{/subjects/attendance/validation/{id}(id=${groupentity.id})}" th:object="${attendanceDTO}" method="POST">
+            
+        
+            <label for="Acode"></label>
+            <input type="text" th:field="*{codeOfAttendance}" placeholder="Enter the code" name="Acode" required>
+        
+            
+        
+            <button type="submit" class="btn">submit</button>
+          </form>
+   </div>
+   
+   
+       <input type="checkbox" id="btn" hidden>
+		<label for="btn" class="menu-btn">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times"></i>
+		</label>
+		<nav id="sidebar">
+			<div class="title">
+				my menu </div>
+			<ul class="list-items">
+				<li><a th:href="@{/subjects/announcement/{id}(id=${groupentity.id})}"><i class="far fa-envelope"></i>Announcment</a></li>
+				<li><a th:href="@{/subjects/attendance/{id}(id=${groupentity.id})}"><i class="fas fa-hand-paper"></i>Attendance</a></li>
+				<li><a th:href="@{/subjects/content/{id}(id=${groupentity.id})}"><i class="fas fa-link"></i>Content</a></li>
+				<li><a th:href="@{/subjects/homework/{id}(id=${groupentity.id})}"><i class="fas fa-stream"></i>Homeworks</a></li>
+				<li><a th:href="@{/subjects/dashboard}"><i class="fas fa-home"></i>Your Cources</a></li>
+				<li><a th:href="@{/logout}"><i class="fa fa-power-off" style="font-size:24px"></i>Logout</a></li>
+				
+
+
+			</ul>
+		</nav>
+	</div>
+      
+    <section></section>
+   </div>
+   </body>
+</html>

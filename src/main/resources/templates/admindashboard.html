@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Dashboard</title>
+
+<!-- <link rel="stylesheet" href="./css/registerform.css" th:href="@{/css/registerform.css}"> -->
+<link rel="stylesheet" href="./css/register.css" th:href="@{/css/register.css}">
+</head>
+<body>
+<div class="container">
+<form class="well form-horizontal" action="#" th:action="@{/admin/createuser}" th:object="${users}" method="POST" id="contact_form" >
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>
+        <center>
+          <h2><b>Registration Form</b></h2>
+        </center>
+      </legend><br>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Name</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="first_name" th:field="*{name}" placeholder="Name" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Type of User</label>
+        <div class="col-md-4 selectContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select name="role" th:field="*{role}" class="form-control selectpicker">
+              <option value="" th:value="'Student'">Student</option>
+              <option th:value="'Instructor'">instructor</option>
+              <option th:value="'Admin'">QU Admin</option>
+              
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">QU number</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="user_name" th:field="*{quNumber}" placeholder="QU number" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input-->
+
+      <div class="form-group">
+        <label class="col-md-4 control-label">Password</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="user_password" th:field="*{password}" placeholder="Password" class="form-control" type="password">
+          </div>
+        </div>
+      </div>
+
+     
+ 
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="email" placeholder="E-Mail Address" th:field="*{email}" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+
+     
+     
+      <!-- Success message -->
+      <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4"><br>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+        </div>
+      </div>
+
+    </fieldset>
+
+
+
+
+  <!--
+  <h1>Sign up</h1><br/>
+
+  
+  <span class="input"></span>
+  <input type="text" th:field="*{name}" name="name" placeholder="Full name" title="Format: Xx[space]Xx (e.g. Alex Cican)" autofocus autocomplete="off" required pattern="^\w+\s\w+$" />
+  
+  <span class="input"></span>
+  <input type="email" th:field="*{email}" name="email" placeholder="Email address" required  />
+  
+  <span id="passwordMeter"></span>
+  <input type="password" name="password" id="password" placeholder="Password" title="Password min 8 characters. At least one UPPERCASE and one lowercase letter" required pattern="(?=^.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>
+
+	<select th:field="*{nationality}">
+							
+								<option th:value="Afghanistan">Afghanistan</option>
+								
+								<option th:value="'Albania'">Albania</option>
+								<option th:value="'Algeria'">Algeria</option>
+									
+							</select>
+
+
+
+  <button type="submit" value="Sign Up" title="Submit form" class="icon-arrow-right"><span>Sign up</span></button>
+  
+  <script src="../static/css/registerform.js" type="text/javascript"></script>
+ --> 
+ 
+ <script src="../static/css/register.js" type="text/javascript" th:href="@{/css/register.js}"></script>
+</form>
+</div>
+</div><!-- /.container -->
+
+
+
+</body>
+</html>
